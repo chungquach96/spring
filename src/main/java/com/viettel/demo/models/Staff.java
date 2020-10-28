@@ -1,17 +1,9 @@
 package com.viettel.demo.models;
 
+import java.io.Serializable;
 import java.util.Collection;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,8 +13,8 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Entity
-@Table(name = "Staff")
-public class Staff {
+@Table(name = "staff")
+public class Staff implements Serializable {
 	@Id
 	@GeneratedValue
 	private long id;
@@ -33,13 +25,13 @@ public class Staff {
 	@Column(name = "Staff_Address")
 	private String Address;
 	
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@EqualsAndHashCode.Exclude
-	@ToString.Exclude
-	@JoinTable(name = "care",
-				joinColumns = @JoinColumn(name = "staff_id"),
-				inverseJoinColumns  = @JoinColumn(name = "client_id"))
-	private Collection<Client> clients;
+//	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//	@EqualsAndHashCode.Exclude
+//	@ToString.Exclude
+//	@JoinTable(name = "care",
+//				joinColumns = @JoinColumn(name = "staff_id"),
+//				inverseJoinColumns  = @JoinColumn(name = "client_id"))
+//	private Collection<Client> clients;
 
 	public long getId() {
 		return id;
@@ -65,21 +57,21 @@ public class Staff {
 		Address = address;
 	}
 
-	public Collection<Client> getClients() {
-		return clients;
-	}
-
-	public void setClients(Collection<Client> clients) {
-		this.clients = clients;
-	}
-
-	public Staff(long id, String name, String address, Collection<Client> clients) {
-		super();
-		this.id = id;
-		this.name = name;
-		Address = address;
-		this.clients = clients;
-	}
+//	public Collection<Client> getClients() {
+//		return clients;
+//	}
+//
+//	public void setClients(Collection<Client> clients) {
+//		this.clients = clients;
+//	}
+//
+//	public Staff(long id, String name, String address, Collection<Client> clients) {
+//		super();
+//		this.id = id;
+//		this.name = name;
+//		Address = address;
+//		this.clients = clients;
+//	}
 
 	public Staff() {
 		super();

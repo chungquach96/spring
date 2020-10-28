@@ -1,16 +1,10 @@
 package com.viettel.demo.controller;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
-import java.util.Random;
-import javax.swing.event.ListSelectionEvent;
-
 import com.viettel.demo.dto.AddressDto;
 import com.viettel.demo.dto.StaffDto;
 import com.viettel.demo.models.Address;
+import com.viettel.demo.models.Client;
+import com.viettel.demo.models.Staff;
 import com.viettel.demo.repository.AddressRepository;
 import com.viettel.demo.repository.ClientRepository;
 import com.viettel.demo.repository.StaffRepository;
@@ -18,15 +12,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import com.viettel.demo.models.Client;
-import com.viettel.demo.models.Staff;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 
 @RestController
-public class MainController {
+public class StaffController {
 
     @Autowired
     private ClientRepository clientRepository;
@@ -41,7 +35,6 @@ public class MainController {
     //Modelmapper
 
     @RequestMapping("/test")
-    @ResponseBody
     public String test() {
         return "asd";
     }
@@ -81,7 +74,7 @@ public class MainController {
         Optional<Staff> s = staffRepository.findById(4L);
         clients.add(c.get());
         if (s.isPresent()) {
-            s.get().setClients(clients);
+//            s.get().setClients(clients);
         }
         Staff resp = staffRepository.save(s.get());
 
