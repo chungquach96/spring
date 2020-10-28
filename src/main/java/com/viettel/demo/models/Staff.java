@@ -21,7 +21,6 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Entity
-
 @Table(name = "Staff")
 public class Staff {
 	@Id

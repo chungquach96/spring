@@ -15,8 +15,8 @@ public interface ClientRepository extends CrudRepository<Client, Long> { // Long
     @Query("SELECT c from Client c where c.fullName like %?1% ")
     List<Client> findByFullNameLike(String fullName);
  
-    List<Client> findByBirthDayGreaterThan(Date birthday);
- 
+//    List<Client> findByBirthDayGreaterThan(Date birthday);
+
     @Query("SELECT coalesce(max(c.id), 0) FROM Client c")
     Long getMaxId();
     
